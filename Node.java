@@ -10,4 +10,16 @@ public class Node{
     return prev;
   }
 
+  public String getData(){
+    return data;
+  }
+
+  public void setNext(Node second){
+    this.next=second;
+  }
+
+  public void setPrev(Node second){
+    this.prev=second;
+  }
+
 }

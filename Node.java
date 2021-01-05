@@ -22,4 +22,8 @@ public class Node{
     this.prev=second;
   }
 
+  public void setData(String second){
+    this.data=second;
+  }
+
 }

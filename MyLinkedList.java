@@ -4,8 +4,6 @@ public class MyLinkedList{
 
   public MyLinkedList(){
     size=0;
-    start=null;
-    end=null;
   }
 
   public int size(){
@@ -93,5 +91,24 @@ public class MyLinkedList{
     }
   }
 
-  // public String toString();
+  public String toString(){
+    String output="[";
+    Node initial=start;
+    int count=0;
+    if (size==0){
+      return "[]";
+    }
+    while (count<size){
+      if (count==size-1){
+        output+=initial.getData()+"]";
+        count++;
+      }
+      else{
+        output+=initial.getData()+", ";
+        initial=initial.getNext();
+        count++;
+      }
+    }
+    return output;
+  }
 }

@@ -67,13 +67,31 @@ public class MyLinkedList{
     else{
       Node initial=start;
       int counter=0;
-      while (counter<index-1){
+      while (counter<index){
         initial=initial.getNext();
         counter++;
       }
       return initial.getData();
     }
   }
-  // public String set(int index, String value);
+
+  public String set(int index, String value){
+    if (index>size()||index<0){
+      throw new IndexOutOfBoundsException("Index "+index + " is out of bounds.");
+    }
+    else{
+      Node toChange=start;
+      int counter=0;
+      while (counter<index){
+        toChange=toChange.getNext();
+        counter++;
+      }
+      String newValue="";
+      toChange.setData(value);
+      newValue=toChange.getData();
+      return newValue;
+    }
+  }
+
   // public String toString();
 }

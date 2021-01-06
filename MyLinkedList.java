@@ -59,7 +59,21 @@ public class MyLinkedList{
     }
     return true;
   }
-  // public String get(int index);
+
+  public String get(int index){
+    if (index>size()||index<0){
+      throw new IndexOutOfBoundsException("Index "+index + " is out of bounds.");
+    }
+    else{
+      Node initial=start;
+      int counter=0;
+      while (counter<index-1){
+        initial=initial.getNext();
+        counter++;
+      }
+      return initial.getData();
+    }
+  }
   // public String set(int index, String value);
   // public String toString();
 }

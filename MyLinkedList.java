@@ -18,8 +18,10 @@ public class MyLinkedList{
     }
     else{
       Node prev=end;
+      Node beforeEnd=end.getPrev();
       end=new Node(value);
       prev.setNext(end);
+      prev.setPrev(beforeEnd);
       end.setPrev(prev);
       size++;
     }
@@ -31,19 +33,22 @@ public class MyLinkedList{
       throw new IndexOutOfBoundsException("Index "+index + " is out of bounds.");
     }
     if (index==size()){
+      add(value);
       return add(value);
     }
     if (index==0){
       Node second=start;
+      Node afterSecond=(start.getNext());
       start=new Node(value);
       start.setNext(second);
       second.setPrev(start);
+      second.setNext(afterSecond);
       return true;
     }
     else{
       Node initial=start;
       int counter=0;
-      while (counter<index-1){
+      while (counter<index){
         initial=initial.getNext();
         counter++;
       }

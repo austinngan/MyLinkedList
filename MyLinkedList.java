@@ -10,7 +10,7 @@ public class MyLinkedList{
     return size;
   }
 
-  public void add(String value){
+  public boolean add(String value){
     if (size==0){
       start=new Node(value);
       end=start;
@@ -25,9 +25,10 @@ public class MyLinkedList{
       end.setPrev(prev);
       size++;
     }
+    return true;
   }
 
-  public void add(int index, String value){
+  public boolean add(int index, String value){
     if (index>size()||index<0){
       throw new IndexOutOfBoundsException("Index "+index + " is out of bounds.");
     }
@@ -41,6 +42,8 @@ public class MyLinkedList{
       start.setNext(second);
       second.setPrev(start);
       second.setNext(afterSecond);
+      size++;
+      return true;
     }
     else{
       Node initial=start;
@@ -56,7 +59,8 @@ public class MyLinkedList{
       insert.setPrev(temp);
       initial.setPrev(insert);
       size++;
-    } 
+    }
+    return true;
   }
 
   public String get(int index){
@@ -116,7 +120,7 @@ public class MyLinkedList{
   public String toStringReversed(){
     String output="[";
     Node initial=end;
-    int count=size()+1;
+    int count=size()-1;
     if (size==0){
       return "[]";
     }

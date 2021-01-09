@@ -180,4 +180,15 @@ public class MyLinkedList{
     }
     return output;
   }
+
+  public void extend(MyLinkedList other){
+    end.setNext(other.start);
+    other.start.setPrev(end);
+    end=other.end;
+    other.start=null;
+    other.end=null;
+    other.size=0;
+    size=size+other.size();
+  }
+
 }

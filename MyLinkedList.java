@@ -4,6 +4,8 @@ public class MyLinkedList{
 
   public MyLinkedList(){
     size=0;
+    start=null;
+    end=null;
   }
 
   public int size(){
@@ -115,6 +117,47 @@ public class MyLinkedList{
       }
     }
     return output;
+  }
+
+  public String remove(int index){
+    Node deleted=start;
+    if (index>=size()||index<0){
+      throw new IndexOutOfBoundsException("Index "+index + " is out of bounds.");
+    }
+    if (index==0){
+      start=start.getNext();
+      start.setPrev(null);
+      size--;
+      return deleted.getData();
+    }
+    if (index==size()-1){
+      deleted=end;
+      end=end.getPrev();
+      end.setNext(null);
+      size--;
+      return deleted.getData();
+    }
+    if (size()==1){
+      start=null;
+      end=null;
+      size--;
+      return deleted.getData();
+    }
+    else{
+      Node initial=start;
+      int counter=0;
+      while (counter<index){
+        initial=initial.getNext();
+        deleted=initial;
+        counter++;
+      }
+      Node temp=initial.getPrev();
+      Node temp2=initial.getNext();
+      temp.setNext(temp2);
+      temp2.setPrev(temp);
+      size--;
+      return deleted.getData();
+    }
   }
 
   public String toStringReversed(){

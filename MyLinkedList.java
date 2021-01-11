@@ -182,6 +182,11 @@ public class MyLinkedList{
   }
 
   public void extend(MyLinkedList other){
+    if (size()==0){
+      start=other.start;
+      end=other.end;
+      size=other.size();
+    }
     end.setNext(other.start);
     other.start.setPrev(end);
     end=other.end;
